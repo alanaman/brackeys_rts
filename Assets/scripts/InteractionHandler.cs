@@ -13,6 +13,8 @@ public class InteractionHandler : MonoBehaviour
     float interactTimer;
     bool isInteracting;
 
+    ItemCollection rewards;
+
     private void Update()
     {
         if(isInteracting)
@@ -20,18 +22,21 @@ public class InteractionHandler : MonoBehaviour
             interactTimer += Time.deltaTime;
             if(interactTimer >= timeToInteract)
             {
-                Interact();
-                interactTimer = 0;
-                isInteracting = false;
+                FinishInteraction();
             }
         }
     }
 
-    public void StartInteraction()
+    public float Getinteractionprogress()
+    {
+        return interactTimer / timeToInteract;
+    }
+
+    void StartInteraction()
     {
         if(instant)
         {
-            Interact();
+            FinishInteraction();
         }
         else
         {
@@ -39,15 +44,40 @@ public class InteractionHandler : MonoBehaviour
         }
     }
 
-    public void StopInteraction()
+    void FinishInteraction()
+    {
+        rewards = interactable.I.GetInteractionReward();
+        GameManager.I.Player.GetComponent<Inventory>().AddResources(rewards);
+        interactable.I.Interact();
+        isInteracting = false;
+        interactTimer = 0;
+    }
+
+    public void CancelInteraction()
     {
         isInteracting = false;
+
+        //let progress be saved
         //interactTimer = 0;
     }
 
-    virtual public void Interact()
+    public void TryStartInteraction()
     {
-        interactable.I.Interact();
+        Inventory inventory = GameManager.I.Player.GetComponent<Inventory>();
+        if(inventory.HasResources(interactable.I.GetRequirements()))
+        {
+            inventory.RemoveResources(interactable.I.GetRequirements());
+            StartInteraction();
+        }
+        else
+        {
+            IndicateRequirementsinsufficient();
+        }
+    }
+
+    void IndicateRequirementsinsufficient()
+    {
+        Debug.Log("Requirements insufficient");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,6 +86,14 @@ public class InteractionHandler : MonoBehaviour
         {
             Debug.Log("collision");
             GameManager.I.Player.AddInterationHandler(this);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other == GameManager.I.PlayerCollider)
+        {
+            GameManager.I.Player.RemoveInteractionHandler(this);
         }
     }
 }

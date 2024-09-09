@@ -37,10 +37,16 @@ public class TreeCutter : MonoBehaviour, IInteractable
         chopCollider.gameObject.SetActive(false);
     }
 
+
     public void Interact()
     {
         Chop();
     }
 
-
+    public virtual ItemCollection GetInteractionReward()
+    {
+        ItemCollection rewards = new ItemCollection();
+        rewards.items.Add(Inventory.ResourceType.Wood, woodRewardAmt);
+        return rewards;
+    }
 }

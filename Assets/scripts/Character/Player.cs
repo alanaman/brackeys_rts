@@ -9,37 +9,75 @@ public class Player : MonoBehaviour
 {
     PlayerMovement playerMovement;
 
+    Inventory inventory;
 
-
+    bool isInteracting = false;
+    InteractionHandler currentInteractionHandler;
 
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        inventory = GetComponent<Inventory>();
     }
-    
+
+    private void Update()
+    {
+        if (isInteracting)
+        {
+            if (!interactionHandlers.Contains(currentInteractionHandler))
+            {
+                CancelInteraction();
+            }
+        }
+        else
+        {
+            hoveredInteractionHandler = GetNearestIH();
+        }
+    }
+
+    InteractionHandler GetNearestIH()
+    {
+        InteractionHandler result = null;
+        float shortestDistance = Mathf.Infinity;
+        foreach (var ih in interactionHandlers)
+        {
+            if (Vector3.Distance(ih.transform.position, transform.position) < shortestDistance)
+            {
+                result = ih;
+                shortestDistance = Vector3.Distance(ih.transform.position, transform.position);
+            }
+        }
+        return result;
+    }
+
     HashSet<InteractionHandler> interactionHandlers = new HashSet<InteractionHandler>();
 
-    InteractionHandler currentInteractionHandler;
+    InteractionHandler hoveredInteractionHandler;
 
     public void AddInterationHandler(InteractionHandler handler)
     {
         interactionHandlers.Add(handler);
-        currentInteractionHandler = interactionHandlers.First();
     }
 
     public void RemoveInteractionHandler(InteractionHandler handler)
     {
         interactionHandlers.Remove(handler);
-        currentInteractionHandler = interactionHandlers.First();
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
         Debug.Log("Interact");
-        if (currentInteractionHandler == null)
+        if (hoveredInteractionHandler == null)
             return;
-        currentInteractionHandler.StartInteraction();
+        hoveredInteractionHandler.TryStartInteraction();
+        isInteracting = true;
+        currentInteractionHandler = hoveredInteractionHandler;
+    }
 
+    void CancelInteraction()
+    {
+        isInteracting = false;
+        currentInteractionHandler.CancelInteraction();
     }
 
     public void OnMovement(InputAction.CallbackContext context)

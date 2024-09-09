@@ -5,5 +5,15 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public abstract void Interact();
+    public void Interact();
+
+    public virtual ItemCollection GetRequirements()
+    {
+        return new ItemCollection();
+    }
+
+    public virtual ItemCollection GetInteractionReward()
+    {
+        return new ItemCollection();
+    }
 }
