@@ -51,6 +51,8 @@ public class InteractionHandler : MonoBehaviour
         interactable.I.Interact();
         isInteracting = false;
         interactTimer = 0;
+
+        //TODO: destroy interactable stuff if no longer needed
     }
 
     public void CancelInteraction()

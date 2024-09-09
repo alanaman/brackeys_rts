@@ -13,16 +13,23 @@ public class TreeCutter : MonoBehaviour, IInteractable
     [SerializeField] GameObject stub;
     [SerializeField] Collider chopCollider;
 
+    HealthBarUI healthBarUI;
+
     private void Start()
     {
         stub.SetActive(false);
         tree.SetActive(true);
+
+        healthBarUI = GetComponentInChildren<HealthBarUI>();
+        healthBarUI.SetMaxHealth(requiredChops);
     }
 
     public void Chop()
     {
         Debug.Log("Chop");
         currentChops++;
+
+        healthBarUI.SetHealth(requiredChops - currentChops);
 
         if (currentChops >= requiredChops)
         {
@@ -35,6 +42,7 @@ public class TreeCutter : MonoBehaviour, IInteractable
         tree.SetActive(false);
         stub.SetActive(true);
         chopCollider.gameObject.SetActive(false);
+        healthBarUI.gameObject.SetActive(false);
     }
 
 
