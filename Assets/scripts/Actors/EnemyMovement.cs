@@ -9,12 +9,14 @@ public class EnemyMovement : MonoBehaviour
     public float distanceFromTarget = 1.5f;
 
     NavMeshAgentUtil nma;
+    Rigidbody rb;
 
     Transform _target;
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         nma = GetComponentInChildren<NavMeshAgentUtil>();
     }
 
@@ -27,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (_target == null)
         {
+            StopMoving();
             return;
         }
 
@@ -51,9 +54,13 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    void StopMoving()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
     void TurnAndMove(Vector3 target)
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
         if (target.magnitude < 0.05f)
         {
             rb.velocity = Vector3.zero;
