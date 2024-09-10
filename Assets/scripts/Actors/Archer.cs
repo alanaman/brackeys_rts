@@ -43,7 +43,10 @@ public class Archer : MonoBehaviour
         if (currentTarget != null)
         {
             //look at the nearest enemy
-            transform.forward = currentTarget.transform.position - transform.position;
+            Vector3 nearestEnemyDir = currentTarget.transform.position - transform.position;
+            nearestEnemyDir.y = 0;
+            transform.forward = nearestEnemyDir.normalized;
+
 
             attacktimer -= Time.deltaTime;
             if (attacktimer < 0)
@@ -62,12 +65,9 @@ public class Archer : MonoBehaviour
 
     void InstantiateArrow()
     {
-        GameObject newArrow = Instantiate(arrow, spawnPoint.position, Quaternion.identity);
-        Rigidbody arrowRb = newArrow.GetComponent<Rigidbody>();
-
-        Vector3 arrowVelocity = CalculateVelocity(currentTarget.transform.position - spawnPoint.position, 45);
-
-        arrowRb.velocity = arrowVelocity;
+        GameObject arrowGO = Instantiate(arrow, spawnPoint.position, Quaternion.identity);
+        Arrow newArrow = arrowGO.GetComponent<Arrow>();
+        newArrow.SetTarget(currentTarget.transform);
     }
 
     Vector3 CalculateVelocity(Vector3 target, float angle)

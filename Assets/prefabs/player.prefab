@@ -106,7 +106,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  maxSpeed: 5
+  maxSpeed: 6
   maxAcceleration: 52
   maxDecceleration: 52
   maxTurnAcceleration: 80
