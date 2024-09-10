@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Collider playerCollider;
 
     HashSet<AllyEntity> allyEntities = new HashSet<AllyEntity>();
+    HashSet<EnemyEntity> enemyEntities = new HashSet<EnemyEntity>();
 
     public float timer = 0;
 
@@ -55,9 +56,24 @@ public class GameManager : MonoBehaviour
         allyEntities.Remove(troop);
     }
 
+    public void AddEnemyEntity(EnemyEntity enemy)
+    {
+        enemyEntities.Add(enemy);
+    }
+
+    public void removeEnemyEntity(EnemyEntity enemy)
+    {
+        enemyEntities.Remove(enemy);
+    }
+
     public List<AllyEntity> GetAllyEntities()
     {
         return new List<AllyEntity>(allyEntities);
+    }
+
+    public List<EnemyEntity> GetEnemyEntities()
+    {
+        return new List<EnemyEntity>(enemyEntities);
     }
     
 }

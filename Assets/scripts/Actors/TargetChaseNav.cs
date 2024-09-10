@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour
+public class TargetChaseNav : MonoBehaviour
 {
     public float moveSpeed = 2;
-    public float distanceFromTarget = 1.5f;
+    public float characterRange = 1.5f;
 
     NavMeshAgentUtil nma;
     Rigidbody rb;
@@ -32,6 +32,13 @@ public class EnemyMovement : MonoBehaviour
             StopMoving();
             return;
         }
+        float distanceFromTarget = Vector3.Distance(transform.position, _target.position);
+
+        if(distanceFromTarget<=characterRange)
+        {
+            StopMoving();
+            return;
+        }
 
         NavMeshPath path = new NavMeshPath();
         Vector3 targetPos = _target.position;
@@ -39,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
         if(path.corners.Length == 2)
         {
             Vector3 target = path.corners[1];
-            target += (transform.position - target).normalized * distanceFromTarget;
+            target += (transform.position - target).normalized * characterRange;
 
             TurnAndMove(target - transform.position);
         }

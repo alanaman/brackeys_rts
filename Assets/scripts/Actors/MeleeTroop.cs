@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
-public class Enemy : MonoBehaviour
+public class MeleeTroop : MonoBehaviour
 {
     public Health health;
     MeleeAttack meleeAttack;
-    EnemyMovement enemyMovement;
+    TargetChaseNav movement;
 
     private void Start()
     {
         health = GetComponent<Health>();
         meleeAttack = GetComponent<MeleeAttack>();
-        enemyMovement = GetComponent<EnemyMovement>();
+        movement = GetComponent<TargetChaseNav>();
     }
 
     private void Update()
@@ -21,22 +21,22 @@ public class Enemy : MonoBehaviour
         //find nearest troop, building or player to target
         float minDist = Mathf.Infinity;
         GameObject target = null;
-        
-        List<AllyEntity> entities = GameManager.I.GetAllyEntities();
-        for(int i = 0; i < entities.Count; i++)
+
+        List<EnemyEntity> entities = GameManager.I.GetEnemyEntities();
+        for (int i = 0; i < entities.Count; i++)
         {
             float dist = Vector3.Distance(transform.position, entities[i].transform.position);
-            if(dist < minDist)
+            if (dist < minDist)
             {
                 minDist = dist;
                 target = entities[i].gameObject;
             }
         }
 
-        if(target != null)
+        if (target != null)
         {
             meleeAttack.SetTarget(target);
-            enemyMovement.SetTarget(target);
+            movement.SetTarget(target);
         }
 
     }

@@ -5,11 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class AllyEntity : MonoBehaviour
 {
-    Health health;
 
     void Start()
     {
-        health = GetComponent<Health>();
         GameManager.I.AddAllyEntity(this);
     }
 

@@ -22,12 +22,17 @@ public class Arrow : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime * arrowSpeed;
-        if (timer > 1f)
+        if (timer > 1f || target == null)
         {
             Destroy(gameObject);
+            return;
         }
         transform.position = EvaluatePosition(timer);
-        transform.forward = EvaluatePosition(timer + 0.001f) - transform.position;
+        Vector3 forward = EvaluatePosition(timer + 0.001f) - transform.position;
+        if(forward != Vector3.zero)
+        {
+            transform.forward = forward;
+        }
     }
 
     public void SetTarget(Transform transform)
@@ -47,7 +52,7 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out Enemy enemy))
+        if (other.gameObject.TryGetComponent(out MeleeEnemy enemy))
         {
             enemy.health.HitDamage(damage);
             Destroy(gameObject);
