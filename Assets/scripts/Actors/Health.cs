@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float health = 10;
+    public HealthBarUI healthBar;
+
+
+    private void Start()
     {
-        
+        healthBar.SetMaxHealth(health);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HitDamage(float damage)
     {
-        
+        health -= damage;
+        healthBar.SetHealth(health);
+
+        if (health <= 0)
+            Destroy(gameObject);
     }
+
+    public float GetHealth() { return health; }
 }

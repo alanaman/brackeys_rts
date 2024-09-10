@@ -2,24 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float health = 10;
-    public HealthBarUI healthBar;
+    public Health health;
+    MeleeAttack meleeAttack;
+    EnemyMovement enemyMovement;
 
     private void Start()
     {
-        healthBar.SetMaxHealth(health);
+        health = GetComponent<Health>();
+        meleeAttack = GetComponent<MeleeAttack>();
+        enemyMovement = GetComponent<EnemyMovement>();
     }
 
-    public void HitDamage(float damage)
+    private void Update()
     {
-        health -= damage;
-        healthBar.SetHealth(health);
+        //find nearest troop, building or player to target
+        float minDist = Mathf.Infinity;
+        GameObject target = null;
+        
+        List<AllyEntity> entities = GameManager.I.GetAllyEntities();
+        for(int i = 0; i < entities.Count; i++)
+        {
+            float dist = Vector3.Distance(transform.position, entities[i].transform.position);
+            if(dist < minDist)
+            {
+                minDist = dist;
+                target = entities[i].gameObject;
+            }
+        }
 
-        if (health <= 0)
-            Destroy(gameObject);
+        if(target != null)
+        {
+            meleeAttack.SetTarget(target);
+            enemyMovement.SetTarget(target);
+        }
+
     }
 
-    public float GetHealth() { return health; }
+
+    public Health GetHealth() { return health; }
 }

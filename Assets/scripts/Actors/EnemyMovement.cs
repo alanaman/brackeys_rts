@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
 
     NavMeshAgentUtil nma;
 
+    Transform _target;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +25,13 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_target == null)
+        {
+            return;
+        }
 
         NavMeshPath path = new NavMeshPath();
-        Vector3 targetPos = GameManager.I.Player.transform.position;
+        Vector3 targetPos = _target.position;
         nma.CalculatePath(targetPos, path);
         if(path.corners.Length == 2)
         {
@@ -55,5 +61,15 @@ public class EnemyMovement : MonoBehaviour
         }
 
         rb.velocity = target.normalized * moveSpeed;
+    }
+
+    public void SetTarget<T>(T target) where T : MonoBehaviour
+    {
+        _target = target.transform;
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        _target = target.transform;
     }
 }

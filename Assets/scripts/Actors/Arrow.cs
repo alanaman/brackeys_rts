@@ -49,7 +49,7 @@ public class Arrow : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out Enemy enemy))
         {
-            enemy.HitDamage(damage);
+            enemy.health.HitDamage(damage);
             Destroy(gameObject);
         }
     }

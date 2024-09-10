@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public Collider PlayerCollider { get { return playerCollider; } private set { playerCollider = value; } }
     [SerializeField] private Collider playerCollider;
 
-
+    HashSet<AllyEntity> allyEntities = new HashSet<AllyEntity>();
 
     public float timer = 0;
 
@@ -44,10 +44,20 @@ public class GameManager : MonoBehaviour
         player = I.Player;
         return player != null;
     }
-    //public static bool TryGetPlayerCollider(out Collider playerCollider)
-    //{
-    //    playerCollider = I.playerCollider;
-    //    return playerCollider != null;
-    //}
 
+    public void AddAllyEntity(AllyEntity troop)
+    {
+        allyEntities.Add(troop);
+    }
+
+    public void removeAllyEntity(AllyEntity troop)
+    {
+        allyEntities.Remove(troop);
+    }
+
+    public List<AllyEntity> GetAllyEntities()
+    {
+        return new List<AllyEntity>(allyEntities);
+    }
+    
 }
