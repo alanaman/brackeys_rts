@@ -20,15 +20,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(0f, 100f)][Tooltip("How fast to stop in mid-air when no direction is used")] public float maxAirDeceleration;
     [SerializeField, Range(0f, 100f)][Tooltip("How fast to stop when changing direction when in mid-air")] public float maxAirTurnAcceleration = 80f;
 
+    [Header("Options")]
+    [Tooltip("When false, the charcter will skip acceleration and deceleration and instantly move and stop")] public bool useAcceleration;
 
-
-    private float directionX;
-    private float directionZ;
+    [Header("Calculations")]
+    Vector2 inpuDir;
     private Vector3 desiredVelocity;
     private Vector3 velocity;
     private float acceleration;
     private float deceleration;
     private float turnAcceleration;
+    float maxSpeedChange;
+
+    [Header("Current State")]
     public bool onGround;
     public bool pressingKey;
 
@@ -52,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Used to flip the character's sprite when she changes direction
         //Also tells us that we are currently pressing a direction button
-        if (directionX != 0)
+        if (inpuDir.magnitude != 0)
         {
             pressingKey = true;
         }
@@ -61,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             pressingKey = false;
         }
 
-        desiredVelocity = new Vector3(directionX, 0f, directionZ) * Mathf.Max(maxSpeed, 0f);
+        desiredVelocity = (new Vector3(inpuDir.x, 0f, inpuDir.y)).normalized * maxSpeed;
     }
 
     private void FixedUpdate()
@@ -76,13 +80,20 @@ public class PlayerMovement : MonoBehaviour
         velocity = rb.velocity;
 
         //Calculate new velocity
-        if (onGround)
+        if (useAcceleration)
         {
-            runWithoutAcceleration();
+            runWithAcceleration();
         }
         else
         {
-            runWithAcceleration();
+            if (onGround)
+            {
+                runWithoutAcceleration();
+            }
+            else
+            {
+                runWithAcceleration();
+            }
         }
 
         rb.velocity = velocity;
@@ -90,8 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetMovementDirection(Vector2 direction)
     {
-        directionX = direction.x;
-        directionZ = direction.y;
+        inpuDir = direction;
     }
     private void runWithoutAcceleration()
     {
@@ -108,12 +118,12 @@ public class PlayerMovement : MonoBehaviour
         deceleration = onGround ? maxDecceleration : maxAirDeceleration;
         turnAcceleration = onGround ? maxTurnAcceleration : maxAirTurnAcceleration;
 
-        float maxSpeedChange = 0;
+        maxSpeedChange = 0;
 
         if (pressingKey)
         {
             //If the sign (i.e. positive or negative) of our input direction doesn't match our movement, it means we're turning around and so should use the turn speed stat.
-            if (Mathf.Sign(directionX) != Mathf.Sign(velocity.x))
+            if (Vector2.Dot(inpuDir, velocity.xz()) < 0)
             {
                 maxSpeedChange = turnAcceleration * Time.deltaTime;
             }

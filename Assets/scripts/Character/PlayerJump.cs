@@ -9,7 +9,7 @@ public class PlayerJump : MonoBehaviour
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public Gravity gravity;
     private CharacterGround ground;
-    [HideInInspector] public Vector2 velocity;
+    [HideInInspector] public Vector3 velocity;
     //private characterJuice juice;
 
     [Header("Jumping Stats")]
@@ -144,7 +144,7 @@ public class PlayerJump : MonoBehaviour
 
         //Set the character's Rigidbody's velocity
         //But clamp the Y variable within the bounds of the speed limit, for the terminal velocity assist option
-        rb.velocity = new Vector3(velocity.x, Mathf.Clamp(velocity.y, -speedLimit, 100));
+        rb.velocity = new Vector3(velocity.x, Mathf.Clamp(velocity.y, -speedLimit, 100), velocity.z);
     }
 
 
