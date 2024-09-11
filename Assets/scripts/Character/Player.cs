@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     PlayerMovement playerMovement;
+    AnimationController animationController;
 
     Inventory inventory;
 
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         inventory = GetComponent<Inventory>();
+        animationController = GetComponentInChildren<AnimationController>();
     }
 
     private void Update()
@@ -93,5 +95,10 @@ public class Player : MonoBehaviour
         //This is called when you input a direction on a valid input type, such as arrow keys or analogue stick
 
         playerMovement.SetMovementDirection(context.ReadValue<Vector2>());
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        animationController.OnAttack();
     }
 }
