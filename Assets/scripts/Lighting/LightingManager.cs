@@ -11,7 +11,7 @@ public class LightingManager : MonoBehaviour
     //Variables
     [SerializeField, Range(0, 24)] private float TimeOfDay;
 
-
+    [SerializeField] DayManager dayManager;
     private void Update()
     {
         if (Preset == null)
@@ -19,14 +19,21 @@ public class LightingManager : MonoBehaviour
 
         if (Application.isPlaying)
         {
-            //(Replace with a reference to the game time)
-            TimeOfDay += Time.deltaTime;
-            TimeOfDay %= 24; //Modulus to ensure always between 0-24
-            UpdateLighting(TimeOfDay / 24f);
+            float lv = dayManager.GetLightingValue();
+            if (lv < 0.75f)
+            {
+                lv += 0.25f;
+            }
+            else
+            {
+                lv -= 0.75f;
+            }
+            UpdateLighting(lv);
         }
         else
         {
-            UpdateLighting(TimeOfDay / 24f);
+
+            UpdateLighting(TimeOfDay%24);
         }
     }
 

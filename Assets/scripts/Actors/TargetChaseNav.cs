@@ -71,11 +71,15 @@ public class TargetChaseNav : MonoBehaviour
         target = target.To2D();
         if (target.magnitude < 0.05f)
         {
-            rb.velocity = Vector3.zero;
+            target = Vector3.zero;
+            target.y = rb.velocity.y;
+            rb.velocity = target;
             return;
         }
 
-        rb.velocity = target.normalized * moveSpeed;
+        target = target.normalized * moveSpeed;
+        target.y = rb.velocity.y;
+        rb.velocity = target;
     }
 
     public void SetTarget<T>(T target) where T : MonoBehaviour
