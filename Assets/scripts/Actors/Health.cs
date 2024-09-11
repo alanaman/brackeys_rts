@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private float health = 10;
     public HealthBarUI healthBar;
+    [SerializeField] bool destroyOnZeroHP = true;
+
+
+    [SerializeField] UnityEvent OnZeroHP; 
 
 
     private void Start()
@@ -19,7 +24,11 @@ public class Health : MonoBehaviour
         healthBar.SetHealth(health);
 
         if (health <= 0)
-            Destroy(gameObject);
+        {
+            OnZeroHP.Invoke();
+            if(destroyOnZeroHP)
+                Destroy(gameObject);
+        }
     }
 
     public float GetHealth() { return health; }

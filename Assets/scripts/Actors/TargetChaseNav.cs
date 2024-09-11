@@ -32,7 +32,7 @@ public class TargetChaseNav : MonoBehaviour
             StopMoving();
             return;
         }
-        float distanceFromTarget = Vector3.Distance(transform.position, _target.position);
+        float distanceFromTarget = Vector3Ext.Distance2D(transform.position, _target.position);
 
         if(distanceFromTarget<=characterRange)
         {
@@ -46,7 +46,7 @@ public class TargetChaseNav : MonoBehaviour
         if(path.corners.Length == 2)
         {
             Vector3 target = path.corners[1];
-            target += (transform.position - target).normalized * characterRange;
+            target += (transform.position - target).To2D().normalized * characterRange;
 
             TurnAndMove(target - transform.position);
         }
@@ -68,6 +68,7 @@ public class TargetChaseNav : MonoBehaviour
 
     void TurnAndMove(Vector3 target)
     {
+        target = target.To2D();
         if (target.magnitude < 0.05f)
         {
             rb.velocity = Vector3.zero;

@@ -11,6 +11,14 @@ public class AllyEntity : MonoBehaviour
         GameManager.I.AddAllyEntity(this);
     }
 
+    private void OnEnable()
+    {
+        GameManager.I?.AddAllyEntity(this);
+    }
+    private void OnDisable()
+    {
+        GameManager.I.removeAllyEntity(this);
+    }
     private void OnDestroy()
     {
         GameManager.I.removeAllyEntity(this);

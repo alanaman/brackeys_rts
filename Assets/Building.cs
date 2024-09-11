@@ -10,14 +10,24 @@ public class Building : MonoBehaviour, IInteractable
     [SerializeField]
     GameObject buildingSlot;
 
+    [SerializeField] bool isPreconstructed;
+
     private void Start()
     {
-        buildingConstructed.SetActive(false);    
+        if(isPreconstructed)
+        {
+            buildingConstructed.SetActive(true);
+            buildingSlot.SetActive(false);
+        }
+        else
+        {
+            buildingConstructed.SetActive(false);
+            buildingSlot.SetActive(true);
+        }
     }
 
     public void Interact()
     {
-        Debug.Log("Building Interacted");
         buildingConstructed.SetActive(true);
         buildingSlot.SetActive(false);
     }
@@ -32,5 +42,11 @@ public class Building : MonoBehaviour, IInteractable
     public bool IsInteractiable()
     {
         return buildingSlot.activeSelf;
+    }
+
+    public void DestroyBuilding()
+    {
+        buildingConstructed.SetActive(false);
+        buildingSlot.SetActive(true);
     }
 }

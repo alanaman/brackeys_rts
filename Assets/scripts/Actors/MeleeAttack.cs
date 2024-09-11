@@ -55,6 +55,6 @@ public class MeleeAttack: MonoBehaviour
 
     bool TargetInRange()
     {
-        return Vector3.Distance(transform.position, targetHealth.transform.position) <= attackRange;
+        return Vector3.Distance(transform.position.xz(), targetHealth.transform.position.xz()) <= attackRange;
     }
 }

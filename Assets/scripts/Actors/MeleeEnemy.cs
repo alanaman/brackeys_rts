@@ -15,7 +15,7 @@ public class MeleeEnemy : MonoBehaviour
         meleeAttack = GetComponent<MeleeAttack>();
         enemyMovement = GetComponent<TargetChaseNav>();
 
-        enemyMovement.characterRange = meleeAttack.attackRange;
+        enemyMovement.characterRange = meleeAttack.attackRange * 0.9f;
     }
 
     private void Update()

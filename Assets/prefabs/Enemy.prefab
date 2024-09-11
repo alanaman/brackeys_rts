@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 610611126345176675}
   - component: {fileID: 265117440842869216}
   - component: {fileID: 1286066488028209380}
-  - component: {fileID: 8176388586165229017}
   m_Layer: 6
   m_Name: enemy
   m_TagString: Untagged
@@ -68,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  distanceFromTarget: 1.5
+  characterRange: 1.5
 --- !u!54 &879236477196200250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -133,6 +132,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   healthBar: {fileID: 4714771930890917517}
+  destroyOnZeroHP: 1
+  OnZeroHP:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &265117440842869216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,20 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 610611126345176675}
---- !u!114 &8176388586165229017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4008995279775424627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 572e0e74defa70d46a4d53b36cbe7d3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  distanceFromTarget: 1.5
 --- !u!1 &6430988930356591080
 GameObject:
   m_ObjectHideFlags: 0

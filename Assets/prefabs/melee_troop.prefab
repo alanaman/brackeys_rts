@@ -120,6 +120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   healthBar: {fileID: 4714771930890917517}
+  destroyOnZeroHP: 1
+  OnZeroHP:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &265117440842869216
 MonoBehaviour:
   m_ObjectHideFlags: 0
