@@ -28,4 +28,9 @@ public class Building : MonoBehaviour, IInteractable
         req.items.Add(Inventory.ResourceType.Wood, 2);
         return req;
     }
+
+    public bool IsInteractiable()
+    {
+        return buildingSlot.activeSelf;
+    }
 }

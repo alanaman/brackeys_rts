@@ -69,15 +69,23 @@ public class Player : MonoBehaviour
         Debug.Log("Interact");
         if (hoveredInteractionHandler == null)
             return;
-        hoveredInteractionHandler.TryStartInteraction();
-        isInteracting = true;
-        currentInteractionHandler = hoveredInteractionHandler;
+        if(hoveredInteractionHandler.TryStartInteraction())
+        {
+            isInteracting = true;
+            currentInteractionHandler = hoveredInteractionHandler;
+        }
     }
 
     void CancelInteraction()
     {
         isInteracting = false;
         currentInteractionHandler.CancelInteraction();
+    }
+
+    public void InteractionFinished()
+    {
+        isInteracting = false;
+        currentInteractionHandler = null;
     }
 
     public void OnMovement(InputAction.CallbackContext context)

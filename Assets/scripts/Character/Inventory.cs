@@ -13,6 +13,8 @@ public class Inventory : MonoBehaviour
 
     List<int> resourceCount;
 
+    [SerializeField] InventoryUI inventoryUI;
+
     private void Start()
     {
         resourceCount = new List<int>(new int[Enum.GetValues(typeof(ResourceType)).Length]);
@@ -22,6 +24,7 @@ public class Inventory : MonoBehaviour
     public void AddResource(ResourceType type, int count)
     {
         resourceCount[(int)type] += count;
+        inventoryUI.UpdateInventoryBar(type, resourceCount[(int)type]);
     }
 
     public void RemoveResource(ResourceType type, int count) 
@@ -30,6 +33,7 @@ public class Inventory : MonoBehaviour
             throw new Exception("Not enough resources");
 
         resourceCount[(int)type] -= count;
+        inventoryUI.UpdateInventoryBar(type, resourceCount[(int)type]);
     }
 
     public int GetResourceCount(ResourceType type)

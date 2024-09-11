@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InteractionHandler : MonoBehaviour
@@ -15,11 +16,23 @@ public class InteractionHandler : MonoBehaviour
 
     ItemCollection rewards;
 
+    static Player player;
+
+    [SerializeField] ProgressCircleUI progressCircleUI;
+
+    private void Start()
+    {
+        player = GameManager.I.Player;
+        if(progressCircleUI != null)
+            progressCircleUI.gameObject.SetActive(false);
+    }
+
     private void Update()
     {
         if(isInteracting)
         {
             interactTimer += Time.deltaTime;
+            progressCircleUI?.SetProgress(interactTimer / timeToInteract);
             if(interactTimer >= timeToInteract)
             {
                 FinishInteraction();
@@ -41,16 +54,29 @@ public class InteractionHandler : MonoBehaviour
         else
         {
             isInteracting = true;
+            if(progressCircleUI != null)
+                progressCircleUI.gameObject.SetActive(true);
         }
     }
 
     void FinishInteraction()
     {
         rewards = interactable.I.GetInteractionReward();
+
         GameManager.I.Player.GetComponent<Inventory>().AddResources(rewards);
         interactable.I.Interact();
         isInteracting = false;
         interactTimer = 0;
+        if(progressCircleUI != null)
+            progressCircleUI.gameObject.SetActive(false);
+
+        player.InteractionFinished();
+
+
+        if(interactable.I.IsInteractiable() == false)
+        {
+            player.RemoveInteractionHandler(this);
+        }
 
         //TODO: destroy interactable stuff if no longer needed
     }
@@ -63,17 +89,19 @@ public class InteractionHandler : MonoBehaviour
         //interactTimer = 0;
     }
 
-    public void TryStartInteraction()
+    public bool TryStartInteraction()
     {
-        Inventory inventory = GameManager.I.Player.GetComponent<Inventory>();
+        Inventory inventory = player.GetComponent<Inventory>();
         if(inventory.HasResources(interactable.I.GetRequirements()))
         {
             inventory.RemoveResources(interactable.I.GetRequirements());
             StartInteraction();
+            return true;
         }
         else
         {
             IndicateRequirementsinsufficient();
+            return false;
         }
     }
 
@@ -84,10 +112,14 @@ public class InteractionHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(interactable.I.IsInteractiable() == false)
+        {
+            return;
+        }
+
         if (other == GameManager.I.PlayerCollider)
         {
-            Debug.Log("collision");
-            GameManager.I.Player.AddInterationHandler(this);
+            player.AddInterationHandler(this);
         }
     }
 
@@ -95,7 +127,17 @@ public class InteractionHandler : MonoBehaviour
     {
         if (other == GameManager.I.PlayerCollider)
         {
-            GameManager.I.Player.RemoveInteractionHandler(this);
+            player.RemoveInteractionHandler(this);
         }
+    }
+
+    private void OnDestroy()
+    {
+        player.RemoveInteractionHandler(this);
+    }
+
+    private void OnDisable()
+    {
+        player.RemoveInteractionHandler(this);
     }
 }
