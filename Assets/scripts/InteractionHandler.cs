@@ -70,12 +70,17 @@ public class InteractionHandler : MonoBehaviour
         if(progressCircleUI != null)
             progressCircleUI.gameObject.SetActive(false);
 
-        player.InteractionFinished();
+
 
 
         if(interactable.I.IsInteractiable() == false)
         {
+            player.InteractionFinished();
             player.RemoveInteractionHandler(this);
+        }
+        else
+        {
+            TryStartInteraction();
         }
 
         //TODO: destroy interactable stuff if no longer needed
