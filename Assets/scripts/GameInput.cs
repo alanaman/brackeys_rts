@@ -34,8 +34,8 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.PlaterInputActionMap.move.performed += player.OnMovement; 
         playerInputActions.PlaterInputActionMap.move.canceled += player.OnMovement;
-        playerInputActions.PlaterInputActionMap.jump.started += player.GetComponent<PlayerJump>().OnJump;
-        playerInputActions.PlaterInputActionMap.jump.canceled += player.GetComponent<PlayerJump>().OnJump;
+        playerInputActions.PlaterInputActionMap.jump.started += player.GetComponent<PlayerJump>().OnJumpInput;
+        playerInputActions.PlaterInputActionMap.jump.canceled += player.GetComponent<PlayerJump>().OnJumpInput;
         playerInputActions.PlaterInputActionMap.interact.performed += player.OnInteract;
         playerInputActions.PlaterInputActionMap.ability.performed += player.OnAttack;
 

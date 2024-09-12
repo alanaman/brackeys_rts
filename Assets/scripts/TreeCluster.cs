@@ -10,6 +10,7 @@ public class TreeCluster : MonoBehaviour
     public int startZ = 0;
     public float width = 500f;
     public float threshold = .9f;
+    public float noiseScale = .1f;
 
 #if UNITY_EDITOR
 
@@ -24,12 +25,12 @@ public class TreeCluster : MonoBehaviour
         {
             for (int j=0; j<100; j++)
             {
-                float x = startX + i * width / 100;
-                float z = startZ + j * width / 100;
-                float perlinNoise = Mathf.PerlinNoise(x/500 * 20, z/500 * 20);
+                float x = i * width / 100;
+                float z = j * width / 100;
+                float perlinNoise = Mathf.PerlinNoise(x/noiseScale, z/noiseScale);
                 if (perlinNoise > threshold)
                 {
-                    Instantiate(tree, new Vector3(x, .5f, z), transform.rotation, transform);
+                    Instantiate(tree, new Vector3(startX + x, .5f, startZ + z), transform.rotation, transform);
                 }
             }
         }

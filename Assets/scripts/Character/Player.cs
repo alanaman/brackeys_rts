@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     PlayerMovement playerMovement;
+    PlayerJump playerJump;
     AnimationController animationController;
 
     Inventory inventory;
@@ -18,8 +19,11 @@ public class Player : MonoBehaviour
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        playerJump = GetComponent<PlayerJump>();
         inventory = GetComponent<Inventory>();
+
         animationController = GetComponentInChildren<AnimationController>();
+        playerJump.JumpStarted.AddListener(OnJumpStart);
     }
 
     private void Update()
@@ -100,5 +104,15 @@ public class Player : MonoBehaviour
     public void OnAttack(InputAction.CallbackContext context)
     {
         animationController.OnAttack();
+    }
+
+    public void OnJumpInput(InputAction.CallbackContext context)
+    {
+        playerJump.OnJumpInput(context);
+    }
+
+    public void OnJumpStart()
+    {
+        animationController.OnJump();
     }
 }

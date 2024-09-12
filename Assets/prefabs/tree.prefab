@@ -292,7 +292,7 @@ MonoBehaviour:
   resourceType: 0
   availableResourceViz: {fileID: 3966121468265813183}
   depleatedResourceViz: {fileID: 8600460367969050805}
-  resourceCollectionCollider: {fileID: 0}
+  resourceCollectionCollider: {fileID: 3069121812340070050}
 --- !u!1 &8275735416971281078
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ public class DayManager : MonoBehaviour
             {
                 enemiesSpawning = true;
                 //StartCoroutine(SpawnEnemies());
-                spawnPointManagers[currentDay % numberOfDNCycles].StartSpawning();
+                spawnPointManagers[(currentDay - 1) % numberOfDNCycles].StartSpawning();
             }
         }
         if(enemiesSpawning)

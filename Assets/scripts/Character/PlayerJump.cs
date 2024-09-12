@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 //This script handles moving the character on the Y axis, for jumping and gravity
@@ -11,6 +12,7 @@ public class PlayerJump : MonoBehaviour
     private CharacterGround ground;
     [HideInInspector] public Vector3 velocity;
     //private characterJuice juice;
+    public UnityEvent JumpStarted;
 
     [Header("Jumping Stats")]
     [SerializeField, Range(2f, 5.5f)][Tooltip("Maximum jump height")] public float jumpHeight = 7.3f;
@@ -61,7 +63,7 @@ public class PlayerJump : MonoBehaviour
         defaultGravityScale = 1f;
     }
 
-    public void OnJump(InputAction.CallbackContext context)
+    public void OnJumpInput(InputAction.CallbackContext context)
     {
         //This function is called when one of the jump buttons (like space or the A button) is pressed.
 
@@ -243,6 +245,7 @@ public class PlayerJump : MonoBehaviour
             //Apply the new jumpSpeed to the velocity. It will be sent to the Rigidbody in FixedUpdate;
             velocity.y += jumpSpeed;
             currentlyJumping = true;
+            JumpStarted.Invoke();
 
             //if (juice != null)
             //{

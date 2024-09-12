@@ -159,7 +159,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  maxSpeed: 12
+  maxSpeed: 20
   maxAcceleration: 18
   maxDecceleration: 36
   maxTurnAcceleration: 80
@@ -184,7 +184,10 @@ MonoBehaviour:
   rb: {fileID: 0}
   gravity: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
-  jumpHeight: 3
+  JumpStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  jumpHeight: 5
   timeToJumpApex: 0.3
   upwardMovementMultiplier: 1
   downwardMovementMultiplier: 2
@@ -223,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966d4c9a761c68142a6fdb19e03da7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  maxHealth: 100
   healthBar: {fileID: 8888850401491920065}
   destroyOnZeroHP: 1
   OnZeroHP:
@@ -1210,6 +1213,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   turnSpeed: 0.1
+  jumpIdleVelocityThreshold: 20
+  jumpEndVelocityThreshold: 10
 --- !u!4 &6481623056519483510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0c7d717d0f14c62469ec67a291219711,
