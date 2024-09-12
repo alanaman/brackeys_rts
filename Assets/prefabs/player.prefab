@@ -24,7 +24,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5838711517471312192
 Transform:
   m_ObjectHideFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   maxAirAcceleration: 0
   maxAirDeceleration: 0
   maxAirTurnAcceleration: 80
+  useAcceleration: 0
   onGround: 0
   pressingKey: 0
 --- !u!114 &4742941433336731806
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   gravity: {fileID: 0}
-  velocity: {x: 0, y: 0}
+  velocity: {x: 0, y: 0, z: 0}
   jumpHeight: 3
   timeToJumpApex: 0.3
   upwardMovementMultiplier: 1
@@ -160,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundLength: 0.53
-  colliderOffset: 0.5
+  colliderOffset: 0.45
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -176,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecee38dd9ccefbd42ad934cd81398ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
 --- !u!114 &6762142136746213974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,8 +190,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966d4c9a761c68142a6fdb19e03da7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  maxHealth: 10
   healthBar: {fileID: 8888850401491920065}
+  destroyOnZeroHP: 1
+  OnZeroHP:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2643047101767753334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,12 +324,12 @@ PrefabInstance:
     - target: {fileID: 1316133644422396315, guid: 7626b8289138bd441aa7700bae9f863e,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.318
       objectReference: {fileID: 0}
     - target: {fileID: 1316133644422396315, guid: 7626b8289138bd441aa7700bae9f863e,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3121231588062049330, guid: 7626b8289138bd441aa7700bae9f863e,
         type: 3}

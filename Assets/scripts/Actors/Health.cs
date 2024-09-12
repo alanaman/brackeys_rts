@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float health = 10;
+    [SerializeField] private float maxHealth = 10;
+    float currentHealth;
     public HealthBarUI healthBar;
     [SerializeField] bool destroyOnZeroHP = true;
 
@@ -15,15 +16,16 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        healthBar.SetMaxHealth(health);
+        healthBar.SetMaxHealth(maxHealth);
+        currentHealth = maxHealth;
     }
 
     public void HitDamage(float damage)
     {
-        health -= damage;
-        healthBar.SetHealth(health);
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             OnZeroHP.Invoke();
             if(destroyOnZeroHP)
@@ -31,5 +33,11 @@ public class Health : MonoBehaviour
         }
     }
 
-    public float GetHealth() { return health; }
+    public float GetHealth() { return maxHealth; }
+
+    private void OnEnable()
+    {
+        healthBar.SetMaxHealth(maxHealth);
+        currentHealth = maxHealth;
+    }
 }

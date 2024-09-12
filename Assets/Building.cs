@@ -12,6 +12,9 @@ public class Building : MonoBehaviour, IInteractable
 
     [SerializeField] bool isPreconstructed;
 
+    [SerializeField] ItemCollection requirements;
+    [SerializeField]
+    public Dictionary<Inventory.ResourceType, int> items;
     private void Start()
     {
         if(isPreconstructed)
@@ -34,9 +37,7 @@ public class Building : MonoBehaviour, IInteractable
 
     public virtual ItemCollection GetRequirements()
     {
-        ItemCollection req = new ItemCollection();
-        req.items.Add(Inventory.ResourceType.Wood, 2);
-        return req;
+        return requirements;
     }
 
     public bool IsInteractiable()

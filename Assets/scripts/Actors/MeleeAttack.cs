@@ -55,6 +55,21 @@ public class MeleeAttack: MonoBehaviour
 
     bool TargetInRange()
     {
-        return Vector3.Distance(transform.position.xz(), targetHealth.transform.position.xz()) <= attackRange;
+        Vector3 ToTarget = targetHealth.transform.position.To2D() - transform.position.To2D();
+        if (ToTarget.magnitude <= attackRange)
+        {
+            return true;
+        }
+
+        Collider targetCollider = targetHealth.GetComponentInChildren<Collider>();
+
+        if(targetCollider != null)
+        {
+            Vector3 point2d = transform.position.To2D() + ToTarget.normalized * attackRange;
+            point2d.y = targetCollider.bounds.center.y;
+            return targetCollider.bounds.Contains(point2d);
+        }
+        Debug.LogWarning("collider could not be fount on target");
+        return false;
     }
 }
