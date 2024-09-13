@@ -40,7 +40,7 @@ public class Building : MonoBehaviour, IInteractable
         return requirements;
     }
 
-    public bool IsInteractiable()
+    public bool IsInteractable()
     {
         return buildingSlot.activeSelf;
     }

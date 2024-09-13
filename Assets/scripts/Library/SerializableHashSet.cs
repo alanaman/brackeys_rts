@@ -4,12 +4,11 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 
 [Serializable]
-public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+public class SerializableHashSet<T> : HashSet<T>, ISerializationCallbackReceiver
 {
-    [Serializable]
-    public class PairClass : SerializablePair<TKey, TValue> { }
+
     [SerializeField]
-    private List<PairClass> keys = new List<PairClass>();
+    private List<T> items = new List<T>();
 
     //[SerializeField]
     //private List<TValue> values = new List<TValue>();
@@ -17,14 +16,11 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
     // save the dictionary to lists
     public void OnBeforeSerialize()
     {
-        keys.Clear();
+        items.Clear();
         //values.Clear();
-        foreach (KeyValuePair<TKey, TValue> pair in this)
+        foreach (T item in this)
         {
-            PairClass pairClass = new PairClass();
-            pairClass.First = pair.Key;
-            pairClass.Second = pair.Value;
-            keys.Add(pairClass);
+            items.Add(item);
             //values.Add(pair.Value);
         }
     }
@@ -37,15 +33,11 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
         //if (keys.Count != values.Count)
         //    throw new System.Exception(string.Format("there are {0} keys and {1} values after deserialization. Make sure that both key and value types are serializable."));
 
-        for (int i = 0; i < keys.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            if (!this.ContainsKey(keys[i].First))
+            if (!this.Contains(items[i]))
             {
-                this.Add(keys[i].First, keys[i].Second);
-            }
-            else
-            {
-                this.Add(keys[i].First, keys[i].Second);
+                this.Add(items[i]);
             }
         }
     }

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DayManager : MonoBehaviour
 {
+    public static DayManager I { get; private set; }
+
     public int dayDuration = 120;
     public int nightDuration = 60;
     [SerializeField] List<SpawnManager> spawnPointManagers;
@@ -17,9 +20,23 @@ public class DayManager : MonoBehaviour
     float currentCycleTimer;
 
     public int CurrentDay { get { return currentDay; } }
+    
+    //set to true to invoke NightToday at game start
+    bool enemiesSpawning = true;
 
-    bool enemiesSpawning = false;
+    public UnityEvent NightToDay;
+    public UnityEvent DayToNight;
 
+    private void Awake()
+    {
+        if (I != null && I != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        I = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +60,7 @@ public class DayManager : MonoBehaviour
                 enemiesSpawning = true;
                 //StartCoroutine(SpawnEnemies());
                 spawnPointManagers[(currentDay - 1) % numberOfDNCycles].StartSpawning();
+                DayToNight.Invoke();
             }
         }
         if(enemiesSpawning)
@@ -50,6 +68,7 @@ public class DayManager : MonoBehaviour
             if (currentCycleTimer < dayDuration)
             {
                 enemiesSpawning = false;
+                NightToDay.Invoke();
             }
         }
 

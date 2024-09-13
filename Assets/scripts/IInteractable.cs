@@ -17,7 +17,7 @@ public interface IInteractable
         return new ItemCollection();
     }
 
-    public bool IsInteractiable();
+    public bool IsInteractable();
 
 }
 

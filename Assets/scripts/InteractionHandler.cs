@@ -77,12 +77,15 @@ public class InteractionHandler : MonoBehaviour
         isInteracting = false;
         interactTimer = 0;
         if(progressCircleUI != null)
+        {
+            progressCircleUI.SetProgress(0);
             progressCircleUI.gameObject.SetActive(false);
+        }
 
 
 
 
-        if(interactable.I.IsInteractiable() == false)
+        if(interactable.I.IsInteractable() == false)
         {
             player.InteractionFinished();
             player.RemoveInteractionHandler(this);
@@ -150,7 +153,7 @@ public class InteractionHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(interactable.I.IsInteractiable() == false)
+        if(interactable.I.IsInteractable() == false)
         {
             return;
         }

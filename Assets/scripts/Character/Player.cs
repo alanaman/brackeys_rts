@@ -57,6 +57,11 @@ public class Player : MonoBehaviour
         float shortestDistance = Mathf.Infinity;
         foreach (var ih in interactionHandlers)
         {
+            if( ih.interactable.I.IsInteractable() == false)
+            {
+                continue;
+            }
+
             if (Vector3.Distance(ih.transform.position, transform.position) < shortestDistance)
             {
                 result = ih;

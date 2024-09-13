@@ -62,7 +62,7 @@ public class ResourceExtractor : MonoBehaviour, IInteractable
         return rewards;
     }
 
-    public bool IsInteractiable()
+    public bool IsInteractable()
     {
         return isInteractable;
     }

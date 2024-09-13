@@ -1091,11 +1091,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612b9fc379f35e84e8b4ac53f3309b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 10
+  dayDuration: 30
   nightDuration: 30
   spawnPointManagers:
   - {fileID: 1798779767}
   - {fileID: 645575495}
+  NightToDay:
+    m_PersistentCalls:
+      m_Calls: []
+  DayToNight:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &250757052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1306,7 +1312,6 @@ MonoBehaviour:
   moonDirectionalLight: {fileID: 826486775}
   skyBox: {fileID: 2100000, guid: ffbc85fd54f28a843ad60f0d01620027, type: 2}
   TimeOfDay: 2.94
-  dayManager: {fileID: 202240905}
 --- !u!1001 &267615922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7832,6 +7837,55 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8279893957554103900}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1575077981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1575077983}
+  - component: {fileID: 1575077984}
+  m_Layer: 0
+  m_Name: audioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1575077983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575077981}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 106.036934, y: 2.079, z: 91.51931}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575077984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575077981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b90ae58e61c594b99a498101db9167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 11400000, guid: 16082c044f480d54e934cb8dc3f6b8f7, type: 2}
+  - {fileID: 11400000, guid: 1a97d7be76f0d614ebe7c7181262f031, type: 2}
+  dayTheme: {fileID: 11400000, guid: 16082c044f480d54e934cb8dc3f6b8f7, type: 2}
+  nightTheme: {fileID: 11400000, guid: 1a97d7be76f0d614ebe7c7181262f031, type: 2}
 --- !u!1001 &1581019305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11143,6 +11197,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1080016673}
+  - {fileID: 1575077983}
   - {fileID: 1329061625}
   - {fileID: 130199528}
   - {fileID: 258397457}
