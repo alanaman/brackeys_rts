@@ -8,6 +8,7 @@ public class InteractionHandler : MonoBehaviour
     public IRef<IInteractable> interactable;
 
     public bool instant;
+    public bool autoContinue;
     public float timeToInteract;
     
 
@@ -19,12 +20,19 @@ public class InteractionHandler : MonoBehaviour
     static Player player;
 
     [SerializeField] ProgressCircleUI progressCircleUI;
+    ResourceRequirementsUI resourceRequirementsUI;
+
+
 
     private void Start()
     {
         player = GameManager.I.Player;
         if(progressCircleUI != null)
             progressCircleUI.gameObject.SetActive(false);
+        
+        resourceRequirementsUI = GetComponentInChildren<ResourceRequirementsUI>();
+
+        resourceRequirementsUI?.UpdateVisual(interactable.I.GetRequirements());
     }
 
     private void Update()
@@ -32,7 +40,7 @@ public class InteractionHandler : MonoBehaviour
         if(isInteracting)
         {
             interactTimer += Time.deltaTime;
-            progressCircleUI?.SetProgress(interactTimer / timeToInteract);
+            progressCircleUI.SetProgress(interactTimer / timeToInteract);
             if(interactTimer >= timeToInteract)
             {
                 FinishInteraction();
@@ -57,6 +65,7 @@ public class InteractionHandler : MonoBehaviour
             if(progressCircleUI != null)
                 progressCircleUI.gameObject.SetActive(true);
         }
+        resourceRequirementsUI?.gameObject.SetActive(false);
     }
 
     void FinishInteraction()
@@ -80,7 +89,17 @@ public class InteractionHandler : MonoBehaviour
         }
         else
         {
-            TryStartInteraction();
+            if (autoContinue)
+            {
+                TryStartInteraction();
+            }
+            else
+            {
+                player.InteractionFinished();
+                resourceRequirementsUI?.gameObject.SetActive(true);
+                progressCircleUI.gameObject.SetActive(false);
+            }
+
         }
 
         //TODO: destroy interactable stuff if no longer needed

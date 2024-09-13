@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -30,7 +31,10 @@ public class TreeCluster : MonoBehaviour
                 float perlinNoise = Mathf.PerlinNoise(x/noiseScale, z/noiseScale);
                 if (perlinNoise > threshold)
                 {
-                    Instantiate(tree, new Vector3(startX + x, .5f, startZ + z), transform.rotation, transform);
+                    GameObject instance = PrefabUtility.InstantiatePrefab(tree, transform) as GameObject;
+                    //Instantiate(tree, new Vector3(startX + x, .5f, startZ + z), transform.rotation, transform);
+                    instance.transform.position = new Vector3(startX + x, .5f, startZ + z);
+
                 }
             }
         }
