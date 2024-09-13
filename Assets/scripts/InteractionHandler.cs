@@ -97,7 +97,8 @@ public class InteractionHandler : MonoBehaviour
             {
                 player.InteractionFinished();
                 resourceRequirementsUI?.gameObject.SetActive(true);
-                progressCircleUI.gameObject.SetActive(false);
+                if(player.hoveredInteractionHandler == this)
+                    progressCircleUI.gameObject.SetActive(true);
             }
 
         }
@@ -132,6 +133,19 @@ public class InteractionHandler : MonoBehaviour
     void IndicateRequirementsinsufficient()
     {
         Debug.Log("Requirements insufficient");
+    }
+
+    public void OnHoverStart()
+    {
+        progressCircleUI?.gameObject.SetActive(true);
+    }
+
+    public void OnHoverEnd()
+    {
+        if (isInteracting == false)
+        {
+            progressCircleUI?.gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

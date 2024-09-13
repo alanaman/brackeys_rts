@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
 
     bool isInteracting = false;
     InteractionHandler currentInteractionHandler;
+    
+    HashSet<InteractionHandler> interactionHandlers = new HashSet<InteractionHandler>();
+
+    public InteractionHandler hoveredInteractionHandler;
 
     private void Start()
     {
@@ -37,7 +41,13 @@ public class Player : MonoBehaviour
         }
         else
         {
-            hoveredInteractionHandler = GetNearestIH();
+            InteractionHandler nearest = GetNearestIH();
+            if(nearest != hoveredInteractionHandler)
+            {
+                hoveredInteractionHandler?.OnHoverEnd();
+                hoveredInteractionHandler = nearest;
+                hoveredInteractionHandler?.OnHoverStart();
+            }
         }
     }
 
@@ -56,9 +66,7 @@ public class Player : MonoBehaviour
         return result;
     }
 
-    HashSet<InteractionHandler> interactionHandlers = new HashSet<InteractionHandler>();
 
-    InteractionHandler hoveredInteractionHandler;
 
     public void AddInterationHandler(InteractionHandler handler)
     {

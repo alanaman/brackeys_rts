@@ -317,6 +317,7 @@ MonoBehaviour:
   interactable:
     target: {fileID: 1084547432978159117}
   instant: 0
+  autoContinue: 1
   timeToInteract: 1
   progressCircleUI: {fileID: 4076960706922133810}
 --- !u!114 &1084547432978159117
