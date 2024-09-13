@@ -11,16 +11,23 @@ public class MeleeAttack: MonoBehaviour
 
     private float nextAttackTime = 0f;
 
+    [SerializeField] MeleeAnimControl meleeAnimControl;
+
     private void Update()
     {
         nextAttackTime -= Time.deltaTime;
         nextAttackTime = Mathf.Max(nextAttackTime, 0);
+        
+        
 
         if(targetHealth == null)
         {
             return;
         }
-        else if(TargetInRange())
+
+        meleeAnimControl.SetTargetPosition(targetHealth.transform.position);
+
+        if(TargetInRange())
         {
 
             if(nextAttackTime <= 0)
@@ -50,6 +57,10 @@ public class MeleeAttack: MonoBehaviour
     }
     void Attack()
     {
+        if(meleeAnimControl != null)
+        {
+            meleeAnimControl.OnAttack();
+        }
         targetHealth.HitDamage(attackDamage);
     }
 
