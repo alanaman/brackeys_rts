@@ -211,12 +211,12 @@ PrefabInstance:
     - target: {fileID: 6916302903667024260, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: isPreconstructed
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6916302903667024260, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: requirements.sList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6916302903667024260, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
@@ -227,6 +227,11 @@ PrefabInstance:
         type: 3}
       propertyPath: requirements.sList.Array.data[0].value
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916302903667024260, guid: bd369cea6bcfe074f909f18dbae66f8c,
+        type: 3}
+      propertyPath: requirements.sList.Array.data[1].value
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7716737498065234273, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
