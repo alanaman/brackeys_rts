@@ -150,6 +150,7 @@ public class InteractionHandler : MonoBehaviour
 
     void IndicateRequirementsinsufficient()
     {
+        ThemeAudioManager.I.PlayError();
         Debug.Log("Requirements insufficient");
     }
 

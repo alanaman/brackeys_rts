@@ -16,10 +16,22 @@ public partial class ThemeAudioManager : MonoBehaviour
 
     [SerializeField] AudioClipSO dayTheme;
     [SerializeField] AudioClipSO nightTheme;
+    [SerializeField] AudioClipSO errorAudio;
 
+
+    public static ThemeAudioManager I;
 
     void Awake()
     {
+        if (I == null)
+        {
+            I = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         foreach (AudioClipSO s in sounds)
         {
@@ -51,6 +63,10 @@ public partial class ThemeAudioManager : MonoBehaviour
         Stop(dayTheme);
     }
 
+    public void PlayError()
+    {
+        Play(errorAudio);
+    }
 
 
     public void Play(AudioClipSO clip)
