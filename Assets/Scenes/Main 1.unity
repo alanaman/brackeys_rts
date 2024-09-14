@@ -10513,6 +10513,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 3793175092514012874, guid: 6c26ad79a766954429c9d9425a98630e,
+        type: 3}
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: nSpawns
+      value: 4
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
@@ -13726,6 +13740,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3793175092514012874, guid: 6c26ad79a766954429c9d9425a98630e,
         type: 3}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: nSpawns
+      value: 4
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
@@ -17541,6 +17563,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3793175092514012874, guid: 6c26ad79a766954429c9d9425a98630e,
         type: 3}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: nSpawns
+      value: 4
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
@@ -20349,6 +20379,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3793175092514012874, guid: 6c26ad79a766954429c9d9425a98630e,
         type: 3}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: nSpawns
+      value: 4
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
@@ -83442,6 +83480,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3793175092514012874, guid: 6c26ad79a766954429c9d9425a98630e,
         type: 3}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: nSpawns
+      value: 4
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
@@ -95803,6 +95849,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3793175092514012874, guid: 6c26ad79a766954429c9d9425a98630e,
         type: 3}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: nSpawns
+      value: 4
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
@@ -97955,6 +98009,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3793175092514012874, guid: 6c26ad79a766954429c9d9425a98630e,
         type: 3}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: nSpawns
+      value: 4
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
