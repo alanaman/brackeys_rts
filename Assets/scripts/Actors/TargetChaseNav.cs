@@ -8,16 +8,21 @@ public class TargetChaseNav : MonoBehaviour
     public float moveSpeed = 2;
     public float characterRange = 1.5f;
 
+    //public float pathFindThreshold = 2f;
+
     NavMeshAgentUtil nma;
     Rigidbody rb;
 
     Transform _target;
 
+    NavMeshPath path;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         nma = GetComponentInChildren<NavMeshAgentUtil>();
+        path = new NavMeshPath();
+
     }
 
     // Update is called once per frame
@@ -40,9 +45,13 @@ public class TargetChaseNav : MonoBehaviour
             return;
         }
 
-        NavMeshPath path = new NavMeshPath();
-        Vector3 targetPos = _target.position;
-        nma.CalculatePath(targetPos, path);
+        if (pathNeedsRecalculation())
+        {
+            Vector3 targetPos = _target.position;
+            nma.CalculatePath(targetPos, path);
+        }
+        
+        
         if(path.corners.Length == 2)
         {
             Vector3 target = path.corners[1];
@@ -59,6 +68,20 @@ public class TargetChaseNav : MonoBehaviour
         {
             TurnAndMove(Vector3.zero);
         }
+    }
+
+    private bool pathNeedsRecalculation()
+    {
+
+        if (path.corners.Length == 0)
+            return true;
+
+        float pathFindThreshold = characterRange * 0.9f;
+
+        if (Vector3.Distance(path.corners[path.corners.Length - 1], _target.position) > pathFindThreshold)
+            return true;
+
+        return false;
     }
 
     void StopMoving()
