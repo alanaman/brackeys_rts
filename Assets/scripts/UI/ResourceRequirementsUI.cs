@@ -30,6 +30,8 @@ public class ResourceRequirementsUI : MonoBehaviour
         ItemCollection reqs = interactable.I.GetRequirements();
         foreach (var req in reqs.items)
         {
+            if(req.Value <= 0)
+                continue;
             ResourceDataSO data = EnumToSoMigarte.GetSo(req.Key);
             SingleResReqUI iconInst = Instantiate(iconTemplate, transform).GetComponent<SingleResReqUI>();
             iconInst.gameObject.SetActive(true);
