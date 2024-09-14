@@ -18,6 +18,11 @@ public class Health : MonoBehaviour
     {
         healthBar.SetMaxHealth(maxHealth);
         currentHealth = maxHealth;
+
+        if(TryGetComponent(out EnemyEntity entity))
+        {
+            healthBar.SetColor(Color.red);
+        }
     }
 
     public void HitDamage(float damage)

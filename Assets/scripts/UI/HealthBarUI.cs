@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HealthBarUI : MonoBehaviour
 {
     public Slider slider;
+    [SerializeField] Image image;
 
     public void SetHealth(float health)
     {
@@ -16,5 +17,10 @@ public class HealthBarUI : MonoBehaviour
     {
         slider.maxValue = health;
         slider.value = health;
+    }
+
+    public void SetColor(Color color)
+    {
+        image.color = color;
     }
 }

@@ -16,11 +16,11 @@ public class InventoryUI : MonoBehaviour
     {
         if (type == Inventory.ResourceType.Wood)
         {
-            woodText.text = "Wood: " + amt.ToString();
+            woodText.text = amt.ToString();
         }
         else if (type == Inventory.ResourceType.Stone)
         {
-            stoneText.text = "Stone: " + amt.ToString();
+            stoneText.text = amt.ToString();
         }
     }
 

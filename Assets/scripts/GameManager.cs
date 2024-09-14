@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public float timer = 0;
 
     public float timeScale = 1f;
+    public bool useCustomTimeScale = false;
 
     bool paused = false;
 
@@ -41,7 +42,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        Time.timeScale = timeScale;
+        if(useCustomTimeScale)
+            Time.timeScale = timeScale;
     }
 
     public static bool TryGetPlayer(out Player player)
@@ -100,6 +102,7 @@ public class GameManager : MonoBehaviour
 
     public void OnContinue()
     {
+        GameInput.I.EnableInput();
         UiManager.I.HidePausemenu();
         paused = false;
         Time.timeScale = 1;

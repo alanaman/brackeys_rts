@@ -1584,7 +1584,7 @@ MonoBehaviour:
   player: {fileID: 1230692163}
   playerCollider: {fileID: 1541130143}
   timer: 0
-  timeScale: 5
+  timeScale: 1
 --- !u!4 &130199528
 Transform:
   m_ObjectHideFlags: 0
@@ -2020,6 +2020,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 172948958}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &178120660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1758358122230080468, guid: 568816f5f7501124e91e90a49e1235cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 815265158}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &185260377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3475999138639197233, guid: 09dff37e1da527644b4f1cf0511b104b,
@@ -4393,12 +4405,12 @@ PrefabInstance:
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: nSpawns
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: burstSpawnSize
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -4408,7 +4420,7 @@ PrefabInstance:
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: spawnStartTimeFromNightFall
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -8455,26 +8467,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3719697641776574041}
     m_Modifications:
-    - target: {fileID: 3850360882121901915, guid: 568816f5f7501124e91e90a49e1235cd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8591656945762557539}
-    - target: {fileID: 3850360882121901915, guid: 568816f5f7501124e91e90a49e1235cd,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleInventoryBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 4811035820700404047, guid: 568816f5f7501124e91e90a49e1235cd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -223.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5827283594257982460, guid: 568816f5f7501124e91e90a49e1235cd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6207958722392909379, guid: 568816f5f7501124e91e90a49e1235cd,
         type: 3}
       propertyPath: m_Name
@@ -11797,18 +11789,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 50, z: 300}
   m_Center: {x: 127, y: 0, z: 0}
---- !u!114 &1197983396 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6477119809487637996, guid: 568816f5f7501124e91e90a49e1235cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 815265158}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1207877856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18980,8 +18960,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorybar: {fileID: 399140341}
-  woodText: {fileID: 1197983396}
-  stoneText: {fileID: 164536488}
+  woodText: {fileID: 164536488}
+  stoneText: {fileID: 178120660}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
