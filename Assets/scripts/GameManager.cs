@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-
+        Time.timeScale = timeScale;
     }
 
     public static bool TryGetPlayer(out Player player)
