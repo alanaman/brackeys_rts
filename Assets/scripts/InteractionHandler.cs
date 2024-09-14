@@ -127,7 +127,7 @@ public class InteractionHandler : MonoBehaviour
     public void CancelInteraction()
     {
         isInteracting = false;
-
+        audioManager.Stop(interactionInProgress);
         //let progress be saved
         //interactTimer = 0;
     }
