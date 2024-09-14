@@ -23,4 +23,14 @@ public class HealthBarUI : MonoBehaviour
     {
         image.color = color;
     }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Enable()
+    {
+        gameObject.SetActive(true);
+    }
 }
