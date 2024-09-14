@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     
     HashSet<InteractionHandler> interactionHandlers = new HashSet<InteractionHandler>();
 
+    [HideInInspector]
     public InteractionHandler hoveredInteractionHandler;
 
     private void Start()
@@ -129,5 +130,9 @@ public class Player : MonoBehaviour
     public void OnJumpStart()
     {
         animationController.OnJump();
+    }
+    private void OnDestroy()
+    {
+        GameManager.I.OnPlayerDead();
     }
 }

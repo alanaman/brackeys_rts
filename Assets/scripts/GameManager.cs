@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     bool paused = false;
 
+    bool isGameOver = false;
+
     private void Awake()
     {
         if (I != null && I != this)
@@ -85,19 +87,60 @@ public class GameManager : MonoBehaviour
             UiManager.I.HidePausemenu();
             paused = false;
             Time.timeScale = 1;
+            GameInput.I.EnableInput();
         }
         else
         {
+            GameInput.I.DisableInput();
             UiManager.I.ShowPausemenu();
             paused = true;
             Time.timeScale = 0;
         }
     }
-    
+
     public void OnContinue()
     {
         UiManager.I.HidePausemenu();
         paused = false;
         Time.timeScale = 1;
+    }
+
+    public void OnPlayerDead()
+    {
+        if(isGameOver)
+        {
+            return;
+        }
+
+        isGameOver = true;
+        GameInput.I.DisableInput();
+        Time.timeScale = 0;
+        UiManager.I.ShowGameOverMenu();
+        UiManager.I.SetReasonText("You died!");
+    }
+
+    public void OnVictory()
+    {
+        if (isGameOver)
+        {
+            return;
+        }
+        isGameOver = true;
+        GameInput.I.DisableInput();
+        Time.timeScale = 0;
+        UiManager.I.ShowVictoryMenu();
+    }
+
+    public void OnCastleDestroyed()
+    {
+        if(isGameOver)
+        {
+            return;
+        }
+        isGameOver = true;
+        GameInput.I.DisableInput();
+        Time.timeScale = 0;
+        UiManager.I.ShowGameOverMenu();
+        UiManager.I.SetReasonText("Your castle got destroyed!");
     }
 }

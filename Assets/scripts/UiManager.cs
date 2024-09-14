@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private GameObject gameOverMenu;
     [SerializeField] private GameObject victoryMenu;
 
+    [SerializeField] TextMeshProUGUI reasonText;
+
     private void Awake()
     {
         if (I != null && I != this)
@@ -20,6 +23,20 @@ public class UiManager : MonoBehaviour
         }
 
         I = this;
+
+
+    }
+
+    public void SetReasonText(string text)
+    {
+        reasonText.text = text;
+    }
+
+    private void Start()
+    {
+        pauseMenu.SetActive(false);
+        gameOverMenu.SetActive(false);
+        victoryMenu.SetActive(false);
     }
 
     public void ShowPausemenu()

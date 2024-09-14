@@ -1,22 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RetryUI : MonoBehaviour
 {
     [SerializeField] Button restartButton;
-
-    private void Awake()
-    {
-        gameObject.SetActive(false);
-    }
+    [SerializeField] Button exitButton;
 
     private void Start()
     {
         restartButton.onClick.AddListener(() =>
         {
-
+            SceneLoader.Load(SceneManager.GetActiveScene().name);
         });
+        exitButton.onClick.AddListener(() => { Application.Quit(); });
     }
 }

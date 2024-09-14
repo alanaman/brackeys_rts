@@ -44,6 +44,15 @@ public class GameInput : MonoBehaviour
         
     }
 
+    public void DisableInput()
+    {
+        playerInputActions.PlaterInputActionMap.Disable();
+    }
+    public void EnableInput()
+    {
+        playerInputActions.PlaterInputActionMap.Enable();
+    }
+
     //public Vector2 GetDirectionVector()
     //{
     //    //Debug.Log(playerInputActions.Player.direction.ReadValue<Vector2>());

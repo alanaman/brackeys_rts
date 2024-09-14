@@ -7,28 +7,25 @@ public static class SceneLoader
 {
 
 
-    public enum Scene
-    {
-        MainMenu,
-        Loading,
-        Track1,
-        TrackTest,
-    }
+    //public enum Scene
+    //{
+    //    Main1,
+    //}
 
 
-    private static Scene targetScene;
+    private static string targetScene;
 
 
-    public static void Load(Scene targetScene)
+    public static void Load(string targetScene)
     {
         SceneLoader.targetScene = targetScene;
 
-        SceneManager.LoadScene(Scene.Loading.ToString());
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public static void LoaderCallback()
     {
-        SceneManager.LoadScene(targetScene.ToString());
+        SceneManager.LoadScene(targetScene);
     }
 
 }
