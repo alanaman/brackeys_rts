@@ -12,11 +12,14 @@ public class Archer : MonoBehaviour
 
     [SerializeField] Transform spawnPoint;
 
+    AudioSource arrowShotAS;
+
     float attacktimer;
 
     void Start()
     {
         attacktimer = timeBetweenAttacks;
+        arrowShotAS = GetComponent<AudioSource>();
     }
 
     GameObject currentTarget;
@@ -61,6 +64,7 @@ public class Archer : MonoBehaviour
     {
         Vector3 arrowDir = (currentTarget.transform.position - transform.position).normalized;
         InstantiateArrow();
+        arrowShotAS.Play();
     }
 
     void InstantiateArrow()

@@ -111,7 +111,9 @@ public class Player : MonoBehaviour
     {
         //This is called when you input a direction on a valid input type, such as arrow keys or analogue stick
 
-        playerMovement.SetMovementDirection(context.ReadValue<Vector2>());
+        Vector2 direction = context.ReadValue<Vector2>();
+        playerMovement.SetMovementDirection(direction);
+        animationController.SetTargetDirection(direction);
     }
 
     public void OnAttack(InputAction.CallbackContext context)

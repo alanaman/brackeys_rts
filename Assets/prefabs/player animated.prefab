@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f08439c8f1d5d846a749588f39f7f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoveredInteractionHandler: {fileID: 0}
 --- !u!114 &5507431277960479701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,10 +1210,11 @@ MonoBehaviour:
   viz: {fileID: 5960665258289990348}
   slashRange: 4
   slashAngle: 120
+  turnSpeedThreshold: 5
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  turnSpeed: 0.1
+  turnSpeed: 10
   jumpIdleVelocityThreshold: 20
   jumpEndVelocityThreshold: 10
 --- !u!4 &6481623056519483510 stripped

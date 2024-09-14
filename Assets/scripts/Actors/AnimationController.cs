@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 public class AnimationController : MonoBehaviour
@@ -7,12 +8,15 @@ public class AnimationController : MonoBehaviour
     [SerializeField] GameObject viz;
     public float slashRange = 40f;
     public float slashAngle = 90f;
+    public float turnSpeedThreshold = 3;
 
     Animator animator;
     Rigidbody rb;
     Vector3 targetDirection;
 
     [SerializeField] LayerMask enemyMask;
+
+
 
     public float turnSpeed = 0.1f;
 
@@ -56,14 +60,15 @@ public class AnimationController : MonoBehaviour
         float speed = velocity.magnitude;
         animator.SetFloat(speedHash, speed);
 
-        if (speed > 0.1f)
-        {
-            targetDirection = velocity.normalized;
-        }
-        viz.transform.forward = Vector3.RotateTowards(viz.transform.forward, targetDirection, turnSpeed, 0.0f);
+        viz.transform.forward = Vector3.RotateTowards(viz.transform.forward, targetDirection, turnSpeed*Time.deltaTime, 0.0f);
 
         handleJump(verticalSpeed);
 
+    }
+
+    public void SetTargetDirection(Vector2 targetDir)
+    {
+        targetDirection = targetDir.To3d();
     }
 
     void handleJump(float verticalSpeed)
