@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 515759358828197583}
   - component: {fileID: 4524647703415142546}
   - component: {fileID: 5627380618329226495}
+  - component: {fileID: 6686136986309318391}
   m_Layer: 5
   m_Name: resourceReqUI
   m_TagString: Untagged
@@ -251,6 +252,18 @@ MonoBehaviour:
   iconTemplate: {fileID: 2603898059168818817}
   interactable:
     target: {fileID: 6916302903667024260}
+--- !u!114 &6686136986309318391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179845293617074117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de207331ea388f419e9fa11858f1af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2603898059168818817
 GameObject:
   m_ObjectHideFlags: 0
