@@ -62,6 +62,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""10b40eca-9b37-4a9d-a3d2-99b1e4e4afff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -163,6 +172,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""650d5b87-7b17-4436-ac31-a125aef3caa0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -175,6 +195,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_PlaterInputActionMap_jump = m_PlaterInputActionMap.FindAction("jump", throwIfNotFound: true);
         m_PlaterInputActionMap_ability = m_PlaterInputActionMap.FindAction("ability", throwIfNotFound: true);
         m_PlaterInputActionMap_interact = m_PlaterInputActionMap.FindAction("interact", throwIfNotFound: true);
+        m_PlaterInputActionMap_escape = m_PlaterInputActionMap.FindAction("escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,6 +261,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlaterInputActionMap_jump;
     private readonly InputAction m_PlaterInputActionMap_ability;
     private readonly InputAction m_PlaterInputActionMap_interact;
+    private readonly InputAction m_PlaterInputActionMap_escape;
     public struct PlaterInputActionMapActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -248,6 +270,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @jump => m_Wrapper.m_PlaterInputActionMap_jump;
         public InputAction @ability => m_Wrapper.m_PlaterInputActionMap_ability;
         public InputAction @interact => m_Wrapper.m_PlaterInputActionMap_interact;
+        public InputAction @escape => m_Wrapper.m_PlaterInputActionMap_escape;
         public InputActionMap Get() { return m_Wrapper.m_PlaterInputActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -269,6 +292,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @interact.started += instance.OnInteract;
             @interact.performed += instance.OnInteract;
             @interact.canceled += instance.OnInteract;
+            @escape.started += instance.OnEscape;
+            @escape.performed += instance.OnEscape;
+            @escape.canceled += instance.OnEscape;
         }
 
         private void UnregisterCallbacks(IPlaterInputActionMapActions instance)
@@ -285,6 +311,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @interact.started -= instance.OnInteract;
             @interact.performed -= instance.OnInteract;
             @interact.canceled -= instance.OnInteract;
+            @escape.started -= instance.OnEscape;
+            @escape.performed -= instance.OnEscape;
+            @escape.canceled -= instance.OnEscape;
         }
 
         public void RemoveCallbacks(IPlaterInputActionMapActions instance)
@@ -308,5 +337,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAbility(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }

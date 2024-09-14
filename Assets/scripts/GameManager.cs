@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     public float timeScale = 1f;
 
+    bool paused = false;
+
     private void Awake()
     {
         if (I != null && I != this)
@@ -36,8 +39,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        Time.timeScale = Mathf.Lerp(Time.timeScale, timeScale, 0.1f);
-        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+
     }
 
     public static bool TryGetPlayer(out Player player)
@@ -75,5 +77,27 @@ public class GameManager : MonoBehaviour
     {
         return new List<EnemyEntity>(enemyEntities);
     }
+
+    public void OnEscape(InputAction.CallbackContext context)
+    {
+        if (paused)
+        {
+            UiManager.I.HidePausemenu();
+            paused = false;
+            Time.timeScale = 1;
+        }
+        else
+        {
+            UiManager.I.ShowPausemenu();
+            paused = true;
+            Time.timeScale = 0;
+        }
+    }
     
+    public void OnContinue()
+    {
+        UiManager.I.HidePausemenu();
+        paused = false;
+        Time.timeScale = 1;
+    }
 }

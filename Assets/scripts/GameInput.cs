@@ -39,6 +39,7 @@ public class GameInput : MonoBehaviour
         playerInputActions.PlaterInputActionMap.interact.performed += player.OnInteract;
         playerInputActions.PlaterInputActionMap.ability.performed += player.OnAttack;
 
+        playerInputActions.PlaterInputActionMap.escape.performed += GameManager.I.OnEscape;
         //playerInputActions.PlaterInputActionMap.ability.performed += GameManager.I.Player.GetComponent<PlayerAbility>().OnAbilityUsed;
         
     }
