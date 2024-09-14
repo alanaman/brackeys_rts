@@ -8,7 +8,7 @@ using System.Collections;
 //Credit to Brackeys youtube tutorial on Audio managers, as the majority of this code and learning how to use it was made by him.
 
 
-public partial class AudioManager : MonoBehaviour
+public partial class ThemeAudioManager : MonoBehaviour
 {
     [SerializeField]
     public List<AudioClipSO> sounds;
@@ -17,23 +17,9 @@ public partial class AudioManager : MonoBehaviour
     [SerializeField] AudioClipSO dayTheme;
     [SerializeField] AudioClipSO nightTheme;
 
-    public static AudioManager I;
-    //AudioManager
 
     void Awake()
     {
-
-        if (I == null)
-        {
-            I = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        DontDestroyOnLoad(gameObject);
 
         foreach (AudioClipSO s in sounds)
         {
@@ -72,6 +58,7 @@ public partial class AudioManager : MonoBehaviour
         if(clip.source == null)
         {
             Debug.LogWarning("Audio source is null");
+            return;
         }
         StartCoroutine(clip.Fade(0, clip.volume, 2));
     }
@@ -83,6 +70,7 @@ public partial class AudioManager : MonoBehaviour
         if(clip.source == null)
         {
             Debug.LogWarning("Audio source is null");
+            return;
         }
         StartCoroutine(clip.Fade(clip.source.volume, 0, 2));
     }

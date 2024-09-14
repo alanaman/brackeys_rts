@@ -22,7 +22,11 @@ public class InteractionHandler : MonoBehaviour
     [SerializeField] ProgressCircleUI progressCircleUI;
     ResourceRequirementsUI resourceRequirementsUI;
 
+    [SerializeField] AudioClipSO startInteraction;
+    [SerializeField] AudioClipSO interactionInProgress;
+    [SerializeField] AudioClipSO endInteraction;
 
+    AudioManager audioManager;
 
     private void Start()
     {
@@ -33,6 +37,12 @@ public class InteractionHandler : MonoBehaviour
         resourceRequirementsUI = GetComponentInChildren<ResourceRequirementsUI>();
 
         resourceRequirementsUI?.UpdateVisual(interactable.I.GetRequirements());
+
+        audioManager = gameObject.AddComponent<AudioManager>();
+        audioManager.AddClip(startInteraction);
+        audioManager.AddClip(interactionInProgress);
+        audioManager.AddClip(endInteraction);
+
     }
 
     private void Update()
@@ -55,6 +65,8 @@ public class InteractionHandler : MonoBehaviour
 
     void StartInteraction()
     {
+        audioManager.Play(startInteraction);
+        audioManager.Play(interactionInProgress);
         if(instant)
         {
             FinishInteraction();
@@ -70,6 +82,7 @@ public class InteractionHandler : MonoBehaviour
 
     void FinishInteraction()
     {
+        audioManager.Play(endInteraction);
         rewards = interactable.I.GetInteractionReward();
 
         GameManager.I.Player.GetComponent<Inventory>().AddResources(rewards);
@@ -87,6 +100,7 @@ public class InteractionHandler : MonoBehaviour
 
         if(interactable.I.IsInteractable() == false)
         {
+            audioManager.Stop(interactionInProgress);
             player.InteractionFinished();
             player.RemoveInteractionHandler(this);
         }
@@ -98,6 +112,7 @@ public class InteractionHandler : MonoBehaviour
             }
             else
             {
+                audioManager.Stop(interactionInProgress);
                 player.InteractionFinished();
                 resourceRequirementsUI?.gameObject.SetActive(true);
                 if(player.hoveredInteractionHandler == this)

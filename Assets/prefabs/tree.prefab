@@ -297,6 +297,10 @@ MonoBehaviour:
   autoContinue: 1
   timeToInteract: 1
   progressCircleUI: {fileID: 1601773402292122188}
+  startInteraction: {fileID: 0}
+  interactionInProgress: {fileID: 11400000, guid: 7091d61484e6746429febf7ff5d457d4,
+    type: 2}
+  endInteraction: {fileID: 0}
 --- !u!114 &1084547432978159117
 MonoBehaviour:
   m_ObjectHideFlags: 0
