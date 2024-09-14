@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.098521724, g: 0.12310702, b: 0.28680187, a: 1}
+  m_IndirectSpecularColor: {r: 0.09852166, g: 0.12310685, b: 0.2868009, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2021,6 +2021,11 @@ PrefabInstance:
       propertyPath: nSpawns
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: timeInbetweenSpawn
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
@@ -2634,7 +2639,7 @@ PrefabInstance:
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: timeInbetweenSpawn
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -3427,6 +3432,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nSpawns
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: timeInbetweenSpawn
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -4234,6 +4244,11 @@ PrefabInstance:
       propertyPath: nSpawns
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: timeInbetweenSpawn
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
@@ -4834,6 +4849,11 @@ PrefabInstance:
       propertyPath: nSpawns
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: timeInbetweenSpawn
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
@@ -5000,7 +5020,7 @@ PrefabInstance:
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: timeInbetweenSpawn
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -5400,7 +5420,7 @@ PrefabInstance:
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: timeInbetweenSpawn
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -5862,6 +5882,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nSpawns
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: timeInbetweenSpawn
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -6519,7 +6544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645575493}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6539,7 +6564,7 @@ Transform:
   - {fileID: 385246145}
   - {fileID: 1460016317}
   - {fileID: 951524292}
-  m_Father: {fileID: 1661757996}
+  m_Father: {fileID: 1798779766}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &645575495
 MonoBehaviour:
@@ -9468,7 +9493,7 @@ PrefabInstance:
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: timeInbetweenSpawn
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -11122,6 +11147,11 @@ PrefabInstance:
       propertyPath: nSpawns
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: timeInbetweenSpawn
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: m_Name
@@ -11511,6 +11541,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nSpawns
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: timeInbetweenSpawn
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -12626,6 +12661,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nSpawns
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: timeInbetweenSpawn
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -15976,7 +16016,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1798779766}
-  - {fileID: 645575494}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1661882836
@@ -16571,6 +16610,11 @@ PrefabInstance:
         type: 3}
       propertyPath: nSpawns
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
+        type: 3}
+      propertyPath: timeInbetweenSpawn
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -17174,6 +17218,7 @@ Transform:
   - {fileID: 2108720979}
   - {fileID: 450332383}
   - {fileID: 381070743}
+  - {fileID: 645575494}
   m_Father: {fileID: 1661757996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1798779767
@@ -18212,7 +18257,7 @@ PrefabInstance:
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: timeInbetweenSpawn
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
@@ -18296,7 +18341,7 @@ PrefabInstance:
     - target: {fileID: 1686516863653463490, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
       propertyPath: timeInbetweenSpawn
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7432416685285046585, guid: 04aac47264d236b468d23bfab1b2ae33,
         type: 3}
