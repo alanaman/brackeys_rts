@@ -59,7 +59,8 @@ public class DayManager : MonoBehaviour
             {
                 enemiesSpawning = true;
                 //StartCoroutine(SpawnEnemies());
-                spawnPointManagers[(currentDay - 1) % numberOfDNCycles].StartSpawning();
+                if(currentDay <= numberOfDNCycles)
+                    spawnPointManagers[currentDay - 1].StartSpawning();
                 DayToNight.Invoke();
             }
         }
@@ -72,6 +73,13 @@ public class DayManager : MonoBehaviour
             }
         }
 
+        if(currentDay > numberOfDNCycles)
+        {
+            if(GameManager.I.GetEnemyEntities().Count == 0)
+            {
+                GameManager.I.OnVictory();
+            }
+        }
     }
 
     public float GetLightingValue()

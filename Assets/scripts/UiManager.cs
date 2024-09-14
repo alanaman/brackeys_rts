@@ -41,31 +41,31 @@ public class UiManager : MonoBehaviour
 
     public void ShowPausemenu()
     {
-        pauseMenu.SetActive(true);
+        pauseMenu?.SetActive(true);
     }
 
     public void HidePausemenu()
     {
-        pauseMenu.SetActive(false);
+        pauseMenu?.SetActive(false);
     }
 
     public void ShowGameOverMenu()
     {
-        gameOverMenu.SetActive(true);
+        gameOverMenu?.SetActive(true);
     }
 
     public void HideGameOverMenu()
     {
-        gameOverMenu.SetActive(false);
+        gameOverMenu?.SetActive(false);
     }
 
     public void ShowVictoryMenu()
     {
-        victoryMenu.SetActive(true);
+        victoryMenu?.SetActive(true);
     }
 
     public void HideVictoryMenu()
     {
-        victoryMenu.SetActive(false);
+        victoryMenu?.SetActive(false);
     }
 }

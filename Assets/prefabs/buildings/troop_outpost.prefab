@@ -428,20 +428,25 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3460774250589131480, guid: bd369cea6bcfe074f909f18dbae66f8c,
+        type: 3}
+      propertyPath: timeToInteract
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3554468479285288334, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -41.016838
       objectReference: {fileID: 0}
     - target: {fileID: 3554468479285288334, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3554468479285288334, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -13.850006
       objectReference: {fileID: 0}
     - target: {fileID: 3554468479285288334, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
@@ -451,17 +456,17 @@ PrefabInstance:
     - target: {fileID: 3554468479285288334, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3554468479285288334, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3554468479285288334, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3554468479285288334, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
@@ -541,12 +546,12 @@ PrefabInstance:
     - target: {fileID: 6916302903667024260, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: requirements.sList.Array.data[0].value
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6916302903667024260, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: requirements.sList.Array.data[1].value
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7716737498065234273, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
