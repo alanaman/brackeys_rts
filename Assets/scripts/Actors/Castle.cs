@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Castle : MonoBehaviour
 {
-    private void OnDestroy()
+    public void OnCastleDestroyed()
     {
         GameManager.I.OnCastleDestroyed();
     }

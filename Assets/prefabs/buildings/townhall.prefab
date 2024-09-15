@@ -148,6 +148,46 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 5202997958190359677, guid: bd369cea6bcfe074f909f18dbae66f8c,
+        type: 3}
+      propertyPath: destroyOnZeroHP
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202997958190359677, guid: bd369cea6bcfe074f909f18dbae66f8c,
+        type: 3}
+      propertyPath: OnZeroHP.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202997958190359677, guid: bd369cea6bcfe074f909f18dbae66f8c,
+        type: 3}
+      propertyPath: OnZeroHP.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202997958190359677, guid: bd369cea6bcfe074f909f18dbae66f8c,
+        type: 3}
+      propertyPath: OnZeroHP.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 3041687964834080893}
+    - target: {fileID: 5202997958190359677, guid: bd369cea6bcfe074f909f18dbae66f8c,
+        type: 3}
+      propertyPath: OnZeroHP.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202997958190359677, guid: bd369cea6bcfe074f909f18dbae66f8c,
+        type: 3}
+      propertyPath: OnZeroHP.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: OnCastleDestroyed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202997958190359677, guid: bd369cea6bcfe074f909f18dbae66f8c,
+        type: 3}
+      propertyPath: OnZeroHP.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: Castle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5202997958190359677, guid: bd369cea6bcfe074f909f18dbae66f8c,
+        type: 3}
+      propertyPath: OnZeroHP.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5371503317537190643, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: m_AnchorMax.y
