@@ -8,6 +8,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 265117440842869216, guid: 5b14dd25a56851b4e8558ff0c544d265,
+        type: 3}
+      propertyPath: attackDamage
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 610611126345176675, guid: 5b14dd25a56851b4e8558ff0c544d265,
         type: 3}
       propertyPath: maxHealth

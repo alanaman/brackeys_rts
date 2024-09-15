@@ -447,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 5202997958190359677, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
       propertyPath: maxHealth
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5549423468087144855, guid: bd369cea6bcfe074f909f18dbae66f8c,
         type: 3}
@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints: {fileID: 2422595154075476105}
-  timeInbetweenSpawn: 2
+  timeInbetweenSpawn: 3
   meleeTroop: {fileID: 4008995279775424627, guid: 691ace1cdb7ebef41b8e5927a7181937,
     type: 3}
 --- !u!4 &8663359607209164554 stripped

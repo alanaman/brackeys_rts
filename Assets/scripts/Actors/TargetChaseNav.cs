@@ -77,9 +77,23 @@ public class TargetChaseNav : MonoBehaviour
             return true;
 
         float pathFindThreshold = characterRange * 0.9f;
+        
+        //if target is far away hasnt moved relatively too much
+        if(Vector3.Distance(transform.position, _target.position) > 100)
+        {
+            return (Vector3.Distance(path.corners[path.corners.Length - 1], _target.position) > 20);
+        }
+        if (Vector3.Distance(transform.position, _target.position) > 50)
+        {
+            return (Vector3.Distance(path.corners[path.corners.Length - 1], _target.position) > 10);
+        }
 
+
+        //if target has moved much too much
         if (Vector3.Distance(path.corners[path.corners.Length - 1], _target.position) > pathFindThreshold)
             return true;
+
+
 
         return false;
     }
@@ -92,13 +106,13 @@ public class TargetChaseNav : MonoBehaviour
     void TurnAndMove(Vector3 target)
     {
         target = target.To2D();
-        if (target.magnitude < 0.05f)
-        {
-            target = Vector3.zero;
-            target.y = rb.velocity.y;
-            rb.velocity = target;
-            return;
-        }
+        //if (target.magnitude < 0.05f)
+        //{
+        //    target = Vector3.zero;
+        //    target.y = rb.velocity.y;
+        //    rb.velocity = target;
+        //    return;
+        //}
 
         target = target.normalized * moveSpeed;
         target.y = rb.velocity.y;

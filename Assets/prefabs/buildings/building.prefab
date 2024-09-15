@@ -780,6 +780,7 @@ MonoBehaviour:
   buildingConstructed: {fileID: 5549423468087144855}
   buildingSlot: {fileID: 190103583827268215}
   isPreconstructed: 1
+  RequirementsUi: {fileID: 1179845293617074117}
   requirements:
     sList: []
 --- !u!65 &2337114281047067508

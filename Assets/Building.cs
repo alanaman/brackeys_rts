@@ -11,7 +11,7 @@ public class Building : MonoBehaviour, IInteractable
     GameObject buildingSlot;
 
     [SerializeField] bool isPreconstructed;
-
+    [SerializeField] GameObject RequirementsUi;
     [SerializeField] ItemCollection requirements;
     [SerializeField]
     public Dictionary<Inventory.ResourceType, int> items;
@@ -49,5 +49,6 @@ public class Building : MonoBehaviour, IInteractable
     {
         buildingConstructed.SetActive(false);
         buildingSlot.SetActive(true);
+        RequirementsUi.SetActive(true);
     }
 }

@@ -69,7 +69,10 @@ public class DayManager : MonoBehaviour
             if (currentCycleTimer < dayDuration)
             {
                 enemiesSpawning = false;
-                NightToDay.Invoke();
+                if(currentDay <= numberOfDNCycles)
+                {
+                    NightToDay.Invoke();
+                }
             }
         }
 
